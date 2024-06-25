@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opciones para elegir</title>
+</head>
+<body>
+    <a href="./quiero.html" target="contenido" id="quiero"><img src="../imagenes/necesita-evaluacion.png" alt="quiero">Yo quiero</a>
+    <a href="./meduele.html" target="contenido" id="duele"><img src="../imagenes/dolor-de-estomago.png" alt="dolor">Me duele</a>
+    <a href="./megusta.html" target="contenido" id="gusta"><img src="../imagenes/realimentacion.png" alt="megusta">Me gusta</a>
+</body>
+<script>
+        const speech = window.speechSynthesis;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        const utter = new SpeechSynthesisUtterance();
+
+        const quiero = document.getElementById('quiero');
+        quiero.addEventListener('click', function(){
+            utter.text = "Yo quiero";
+            speech.speak(utter);       
+        });
+        const duele = document.getElementById('duele');
+        duele.addEventListener('click', function(){
+            utter.text = "Me duele";
+            speech.speak(utter);       
+        });
+        const gusta = document.getElementById('gusta');
+        gusta.addEventListener('click', function(){
+            utter.text = "Me gusta";
+            speech.speak(utter);       
+        });
+</script>
+</html>
