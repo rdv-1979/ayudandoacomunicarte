@@ -21,6 +21,16 @@
                 <td>Ir al baño</td>
                 <td>Un taxi</td>
             </tr>
+            <tr class="fila-imagenes">
+                <td><img src="../imagenes/caminar.png" alt="caminar" id="caminar"></td>
+                <td><img src="../imagenes/charlar.png" alt="charlar" id="charlar"></td>
+                <td><img src="../imagenes/correr.png" alt="correr" id="correr"></td>
+            </tr>
+            <tr>
+                <td>Caminar</td>
+                <td>Charlar</td>
+                <td>Correr</td>
+            </tr>
         </tbody>
     </table>
 
@@ -76,7 +86,10 @@
         const helado = document.getElementById('helado');
         const baño = document.getElementById('baño');
         const taxi = document.getElementById('taxi');
-
+        const caminar = document.getElementById('caminar');
+        const charlar = document.getElementById('charlar');
+        const correr = document.getElementById('correr');
+        
         const ddl = document.getElementById('ddl');
         const chocolate = document.getElementById('chocolate');
         const vainilla = document.getElementById('vainilla');
@@ -118,6 +131,18 @@
         });
         durazno.addEventListener('click', function(){
             utter.text = "Durazno";
+            speech.speak(utter);   
+        });
+        caminar.addEventListener('click', function(){
+            utter.text = "Caminar";
+            speech.speak(utter);   
+        });
+        charlar.addEventListener('click', function(){
+            utter.text = "Charlar";
+            speech.speak(utter);   
+        });
+        correr.addEventListener('click', function(){
+            utter.text = "Correr";
             speech.speak(utter);   
         });
     </script>
