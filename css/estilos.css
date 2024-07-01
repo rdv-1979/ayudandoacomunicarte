@@ -13,6 +13,22 @@ img{
     width: 100%;
     height: 100%;
 }
+.tabla-quiero img{
+    width: 100%;
+    height: 100%;
+}
+img:hover{
+    transform: scale(1.2);
+}
 .tabla-dolor tbody .fila-imagenes td{
     border: 2px solid black;
+}
+.tabla-quiero tbody .fila-imagenes td{
+    border: 2px solid black;
+}
+.tabla-dolor .fila-imagenes .opcion{
+    border: 8px solid green;
+}
+.eleccion{
+    border: 2px solid red;
 }

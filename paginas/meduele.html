@@ -10,6 +10,16 @@
     <table class="tabla-dolor">
         <tbody>
             <tr class="fila-imagenes">
+                <td class="opcion"><img src="../imagenes/poco.png" alt="poco" id="poco"></td>
+                <td class="opcion"><img src="../imagenes/mucho.png" alt="mucho" id="mucho"></td>
+                <td class="opcion"><img src="../imagenes/muchisimo.png" alt="muchisimo" id="muchisimo"></td>
+            </tr>
+            <tr>
+                <td>Poco</td>
+                <td>Mucho</td>
+                <td>Muchísimo</td>
+            </tr>
+            <tr class="fila-imagenes">
                 <td><img src="../imagenes/dolor_de_cabeza.png" alt="cabeza" id="cabeza"></td>
                 <td><img src="../imagenes/dolor_de_oído.png" alt="oido" id="oido"></td>
                 <td><img src="../imagenes/dolor_de_muela.png" alt="muela" id="muela"></td>
@@ -32,10 +42,22 @@
             <tr class="fila-imagenes">
                 <td><img src="../imagenes/dolor_de_garganta.png" alt="garganta" id="garganta"></td>
                 <td><img src="../imagenes/dolor_de_pierna.png" alt="pierna" id="pierna"></td>
+                <td><img src="../imagenes/dolor_de_mano.png" alt="mano" id="mano"></td>
             </tr>
             <tr>
                 <td><p>La garganta</p></td>
                 <td><p>La pierna</p></td>
+                <td><p>La mano</p></td>
+            </tr>
+            <tr class="fila-imagenes">
+                <td><img src="../imagenes/dolor_de_estómago.png" alt="estomago" id="estomago"></td>
+                <td><img src="../imagenes/dolor_muscular.png" alt="musculos" id="musculos"></td>
+                <td><img src="../imagenes/dolor_de_pie.png" alt="pie" id="pie"></td> 
+            </tr>
+            <tr>
+                <td><p>El estomago</p></td>
+                <td><p>Los músculos</p></td>
+                <td><p>El pie</p></td>
             </tr>
         </tbody>
     </table>
@@ -46,6 +68,10 @@
         speech.pitch = 1;
         const utter = new SpeechSynthesisUtterance();
 
+        const poco = document.getElementById('poco');
+        const mucho = document.getElementById('mucho');
+        const muchisimo = document.getElementById('muchisimo');
+
         const cabeza = document.getElementById('cabeza');
         const oido = document.getElementById('oido');
         const muela = document.getElementById('muela');
@@ -54,6 +80,23 @@
         const brazo = document.getElementById('brazo');
         const garganta = document.getElementById('garganta');
         const pierna = document.getElementById('pierna');
+        const mano = document.getElementById('mano');
+        const estomago = document.getElementById('estomago');
+        const musculos = document.getElementById('musculos');
+        const pie = document.getElementById('pie');
+
+        poco.addEventListener('click', function(){
+            utter.text = "Un Poco";
+            speech.speak(utter);   
+        });
+        mucho.addEventListener('click', function(){
+            utter.text = "Mucho";
+            speech.speak(utter);   
+        });
+        muchisimo.addEventListener('click', function(){
+            utter.text = "Muchisimo";
+            speech.speak(utter);   
+        });
 
         cabeza.addEventListener('click', function(){
             utter.text = "La cabeza";
@@ -85,6 +128,22 @@
         });
         pierna.addEventListener('click', function(){
             utter.text = "La pierna";
+            speech.speak(utter);   
+        });
+        mano.addEventListener('click', function(){
+            utter.text = "La mano";
+            speech.speak(utter);   
+        });
+        estomago.addEventListener('click', function(){
+            utter.text = "El estómago";
+            speech.speak(utter);   
+        });
+        musculos.addEventListener('click', function(){
+            utter.text = "Los músculos";
+            speech.speak(utter);   
+        });
+        pie.addEventListener('click', function(){
+            utter.text = "El pie";
             speech.speak(utter);   
         });
     </script>
