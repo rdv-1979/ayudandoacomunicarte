@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/estilos.css">
+    <title>Menu</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <a href="textoavoz.html" target="contenido"><i class='bx bx-volume-full bx-flashing iconos'></i></a>
+                    <p>Texto a Voz</p>
+                </td>
+                <td style="width: 10px;"></td>
+                <td>
+                    <a href="api.html" target="contenido"><i class='bx bx-search bx-flashing iconos'></i></a>
+                    <p>Busqueda</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        const busqueda = document.getElementById('busqueda');
+        busqueda.addEventListener('click', () => {
+            const buscar = document.getElementById('buscar').value;
+            
+        });
+    </script>
+</body>
+</html>

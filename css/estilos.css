@@ -19,7 +19,7 @@ img{
 }
 img:hover{
     cursor: pointer;
-    transform: scale(1.2);
+    transform: scale(1.05);
 }
 .tabla-dolor tbody .fila-imagenes td{
     border: 2px solid black;
@@ -32,4 +32,22 @@ img:hover{
 }
 .eleccion{
     border: 2px solid red;
+}
+.iconos{
+    font-size:50px;
+}
+.espacio{
+    padding: 10px;
+    border: 2px solid black;
+}
+.busquedas{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 10px;
+}
+.img-buscar{
+    border: 2px solid greenyellow;
 }

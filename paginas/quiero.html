@@ -31,6 +31,16 @@
                 <td>Charlar</td>
                 <td>Correr</td>
             </tr>
+            <tr class="fila-imagenes">
+                <td><img src="../imagenes/bailar.png" alt="bailar" id="bailar"></td>
+                <td><img src="../imagenes/dormir.png" alt="dormir" id="dormir"></td>
+                <td><img src="../imagenes/salir.png" alt="salir" id="salir"></td>
+            </tr>
+            <tr>
+                <td>Bailar</td>
+                <td>Dormir</td>
+                <td>Correr</td>
+            </tr>
         </tbody>
     </table>
 
@@ -89,6 +99,9 @@
         const caminar = document.getElementById('caminar');
         const charlar = document.getElementById('charlar');
         const correr = document.getElementById('correr');
+        const bailar = document.getElementById('bailar');
+        const dormir = document.getElementById('dormir');
+        const salir = document.getElementById('salir');
         
         const ddl = document.getElementById('ddl');
         const chocolate = document.getElementById('chocolate');
@@ -143,6 +156,18 @@
         });
         correr.addEventListener('click', function(){
             utter.text = "Correr";
+            speech.speak(utter);   
+        });
+        bailar.addEventListener('click', function(){
+            utter.text = "Bailar";
+            speech.speak(utter);   
+        });
+        dormir.addEventListener('click', function(){
+            utter.text = "Domir";
+            speech.speak(utter);   
+        });
+        salir.addEventListener('click', function(){
+            utter.text = "Salir";
             speech.speak(utter);   
         });
     </script>
