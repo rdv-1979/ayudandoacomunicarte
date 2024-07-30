@@ -29,6 +29,7 @@ img:hover{
 }
 .tabla-dolor .fila-imagenes .opcion{
     border: 8px solid green;
+    background-color:burlywood;
 }
 .eleccion{
     border: 2px solid red;

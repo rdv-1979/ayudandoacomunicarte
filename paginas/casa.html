@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <table class="tabla-dolor">
+        <tbody>
+            <tr class="fila-imagenes">
+                <td class="opcion"><img src="../imagenes/cocina.png" alt="cocina" id="cocina"></td>
+                <td class="opcion"><img src="../imagenes/baño.png" alt="baño" id="baño"></td>
+                <td class="opcion"><img src="../imagenes/dormitorio.png" alt="dormitorio" id="dormitorio"></td>
+            </tr>
+            <tr>
+                <td>Cocina</td>
+                <td>Baño</td>
+                <td>Dormitorio</td>
+            </tr>
+            <tr class="fila-imagenes">
+                <td class="opcion"><img src="../imagenes/salon.png" alt="salon" id="salon"></td>
+                <td class="opcion"><img src="../imagenes/pasillo.png" alt="pasillo" id="pasillo"></td>
+                <td class="opcion"><img src="../imagenes/puerta.png" alt="puerta" id="puerta"></td>
+            </tr>
+            <tr>
+                <td>Salón</td>
+                <td>Pasillo</td>
+                <td>Puerta</td>
+            </tr>
+            <tr class="fila-imagenes">
+                <td class="opcion"><img src="../imagenes/cuchara.png" alt="cuchara" id="cuchara"></td>
+                <td class="opcion"><img src="../imagenes/inodoro.png" alt="inodoro" id="inodoro"></td>
+                <td class="opcion"><img src="../imagenes/armario.png" alt="armario" id="armario"></td>
+            </tr>
+            <tr>
+                <td>Cuchara</td>
+                <td>Inodoro</td>
+                <td>Armario</td>
+            </tr>
+            <tr class="fila-imagenes">
+                <td class="opcion"><img src="../imagenes/estanteria.png" alt="estanteria" id="estanteria"></td>
+                <td class="opcion"><img src="../imagenes/ventana.png" alt="ventana" id="ventana"></td>
+                <td class="opcion"><img src="../imagenes/tenedor.png" alt="tenedor" id="tenedor"></td>
+            </tr>
+            <tr>
+                <td>Estantería</td>
+                <td>Ventana</td>
+                <td>Tenedor</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        const speech = window.speechSynthesis;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        const utter = new SpeechSynthesisUtterance();
+
+        const cocina = document.getElementById('cocina');
+        const baño = document.getElementById('baño');
+        const dormitorio = document.getElementById('dormitorio');
+        const salon = document.getElementById('salon');
+        const pasillo = document.getElementById('pasillo');
+        const puerta = document.getElementById('puerta');
+        const cuchara = document.getElementById('cuchara');
+        const inodoro = document.getElementById('inodoro');
+        const armario = document.getElementById('armario');
+        const estanteria = document.getElementById('estanteria');
+        const ventana = document.getElementById('ventana');
+        const tenedor = document.getElementById('tenedor');
+
+        cocina.addEventListener('click', function(){
+            utter.text = 'Cocina';
+            speech.speak(utter);
+        });
+        baño.addEventListener('click', function(){
+            utter.text = 'Baño';
+            speech.speak(utter);
+        });
+        dormitorio.addEventListener('click', function(){
+            utter.text = 'Dormitorio';
+            speech.speak(utter);
+        });
+        salon.addEventListener('click', function(){
+            utter.text = 'Salón';
+            speech.speak(utter);
+        });
+        pasillo.addEventListener('click', function(){
+            utter.text = 'Pasillo';
+            speech.speak(utter);
+        });
+        puerta.addEventListener('click', function(){
+            utter.text = 'Puerta';
+            speech.speak(utter);
+        });
+        cuchara.addEventListener('click', function(){
+            utter.text = 'Cuchara';
+            speech.speak(utter);
+        });
+        inodoro.addEventListener('click', function(){
+            utter.text = 'Inodoro';
+            speech.speak(utter);
+        });
+        armario.addEventListener('click', function(){
+            utter.text = 'Armario';
+            speech.speak(utter);
+        });
+        estanteria.addEventListener('click', function(){
+            utter.text = 'Estantería';
+            speech.speak(utter);
+        });
+        ventana.addEventListener('click', function(){
+            utter.text = 'Ventana';
+            speech.speak(utter);
+        });
+        tenedor.addEventListener('click', function(){
+            utter.text = 'Tenedor';
+            speech.speak(utter);
+        });
+    </script>
+</body>
+</html>

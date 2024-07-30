@@ -13,6 +13,8 @@
             <li><a href="./quiero.html" target="contenido" id="quiero"><img src="../imagenes/quiero.png" alt="quiero" class="img-quiero">Yo quiero</a></li>
             <li><a href="./meduele.html" target="contenido" id="duele"><img src="../imagenes/dolor.png" alt="dolor">Me duele</a></li>
             <li><a href="./megusta.html" target="contenido" id="gusta"><img src="../imagenes/me_gusta_eso.png" alt="megusta">Me gusta</a></li>
+            <li><a href="./personas.html" target="contenido" id="personas"><img src="../imagenes/personas.png" alt="personas">Personas</a></li>
+            <li><a href="./casa.html" target="contenido" id="casa"><img src="../imagenes/casa.png" alt="casa">Casa</a></li>
         </ul>
     </nav>
 </body>
@@ -36,6 +38,16 @@
         const gusta = document.getElementById('gusta');
         gusta.addEventListener('click', function(){
             utter.text = "Me gusta";
+            speech.speak(utter);       
+        });
+        const personas = document.getElementById('personas');
+        personas.addEventListener('click', function(){
+            utter.text = "Personas";
+            speech.speak(utter);       
+        });
+        const casa = document.getElementById('casa');
+        casa.addEventListener('click', function(){
+            utter.text = "Casa";
             speech.speak(utter);       
         });
 </script>

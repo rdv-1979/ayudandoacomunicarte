@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estilos.css">
+    <title>Personas</title>
+</head>
+<body>
+    <table class="tabla-dolor">
+        <tbody>
+            <tr class="fila-imagenes">
+                <td class="opcion"><img src="../imagenes/yo.png" alt="yo" id="yo"></td>
+                <td class="opcion"><img src="../imagenes/tu.png" alt="tu" id="tu"></td>
+                <td class="opcion"><img src="../imagenes/nosotros.png" alt="nosotros" id="nosotros"></td>
+            </tr>
+            <tr>
+                <td>Yo</td>
+                <td>Tú</td>
+                <td>Nosotros</td>
+            </tr>
+            <tr class="fila-imagenes">
+                <td class="opcion"><img src="../imagenes/mama.png" alt="mama" id="mama"></td>
+                <td class="opcion"><img src="../imagenes/papa.png" alt="papa" id="papa"></td>
+                <td class="opcion"><img src="../imagenes/tutor.png" alt="tutor" id="tutor"></td>
+            </tr>
+            <tr>
+                <td>Mamá</td>
+                <td>Papá</td>
+                <td>Tutor</td>
+            </tr>
+            <tr class="fila-imagenes">
+                <td class="opcion"><img src="../imagenes/el.png" alt="el" id="el"></td>
+                <td class="opcion"><img src="../imagenes/ella.png" alt="ella" id="ella"></td>
+                <td class="opcion"><img src="../imagenes/quien.png" alt="quien" id="quien"></td>
+            </tr>
+            <tr>
+                <td>Él</td>
+                <td>Ella</td>
+                <td>Quién</td>
+            </tr>
+            <tr class="fila-imagenes">
+                <td class="opcion"><img src="../imagenes/abuelo.png" alt="abuelo" id="abuelo"></td>
+                <td class="opcion"><img src="../imagenes/abuela.png" alt="abuela" id="abuela"></td>
+                <td class="opcion"><img src="../imagenes/tio.png" alt="tio" id="tio"></td>
+            </tr>
+            <tr>
+                <td>Abuelo</td>
+                <td>Abuela</td>
+                <td>Tío</td>
+            </tr>
+            <tr class="fila-imagenes">
+                <td class="opcion"><img src="../imagenes/tia.png" alt="tia" id="tia"></td>
+                <td class="opcion"><img src="../imagenes/primo.png" alt="primo" id="primo"></td>
+                <td class="opcion"><img src="../imagenes/prima.png" alt="prima" id="prima"></td>
+            </tr>
+            <tr>
+                <td>Tía</td>
+                <td>Primo</td>
+                <td>Prima</td>
+            </tr>
+            <tr class="fila-imagenes">
+                <td class="opcion"><img src="../imagenes/amigos.png" alt="amigos" id="amigos"></td>
+                <td class="opcion"><img src="../imagenes/vecino.png" alt="vecino" id="vecino"></td>
+                <td class="opcion"><img src="../imagenes/maestra.png" alt="maestra" id="maestra"></td>
+            </tr>
+            <tr>
+                <td>Amigos</td>
+                <td>Vecino</td>
+                <td>Maestra</td>
+            </tr>
+            <tr class="fila-imagenes">
+                <td class="opcion"><img src="../imagenes/policia.png" alt="policia" id="policia"></td>
+                <td class="opcion"><img src="../imagenes/bombero.png" alt="bombero" id="bombero"></td>
+                <td class="opcion"><img src="../imagenes/medica.png" alt="medica" id="medica"></td>
+            </tr>
+            <tr>
+                <td>Policía</td>
+                <td>Bombero</td>
+                <td>Médica</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        const speech = window.speechSynthesis;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        const utter = new SpeechSynthesisUtterance();
+
+        const yo = document.getElementById('yo');
+        const tu = document.getElementById('tu');
+        const nosotros = document.getElementById('nosotros');
+        const mama = document.getElementById('mama');
+        const papa = document.getElementById('papa');
+        const tutor = document.getElementById('tutor');
+        const el = document.getElementById('el');
+        const ella = document.getElementById('ella');
+        const quien = document.getElementById('quien');
+        const abuelo = document.getElementById('abuelo');
+        const abuela = document.getElementById('abuela');
+        const tio = document.getElementById('tio');
+        const tia = document.getElementById('tia');
+        const primo = document.getElementById('primo');
+        const prima = document.getElementById('prima');
+        const amigos = document.getElementById('amigos');
+        const vecino = document.getElementById('vecino');
+        const maestra = document.getElementById('maestra');
+        const policia = document.getElementById('policia');
+        const bombero = document.getElementById('bombero');
+        const medica = document.getElementById('medica');
+
+        yo.addEventListener('click', function(){
+            utter.text = "Yo";
+            speech.speak(utter);   
+        });
+        tu.addEventListener('click', function(){
+            utter.text = "Tú";
+            speech.speak(utter);   
+        });
+        nosotros.addEventListener('click', function(){
+            utter.text = "Nosotros";
+            speech.speak(utter);   
+        });
+        mama.addEventListener('click', function(){
+            utter.text = "Mamá";
+            speech.speak(utter);   
+        });
+        papa.addEventListener('click', function(){
+            utter.text = "Papá";
+            speech.speak(utter);   
+        });
+        tutor.addEventListener('click', function(){
+            utter.text = "Tutor";
+            speech.speak(utter);   
+        });
+        el.addEventListener('click', function(){
+            utter.text = "Èl";
+            speech.speak(utter);   
+        });
+        ella.addEventListener('click', function(){
+            utter.text = "Ella";
+            speech.speak(utter);   
+        });
+        quien.addEventListener('click', function(){
+            utter.text = "Quién";
+            speech.speak(utter);   
+        });
+        abuelo.addEventListener('click', function(){
+            utter.text = "Abuelo";
+            speech.speak(utter);   
+        });
+        abuela.addEventListener('click', function(){
+            utter.text = "Abuela";
+            speech.speak(utter);   
+        });
+        tio.addEventListener('click', function(){
+            utter.text = "Tío";
+            speech.speak(utter);   
+        });
+        tia.addEventListener('click', function(){
+            utter.text = "Tía";
+            speech.speak(utter);   
+        });
+        primo.addEventListener('click', function(){
+            utter.text = "Primo";
+            speech.speak(utter);   
+        });
+        prima.addEventListener('click', function(){
+            utter.text = "Prima";
+            speech.speak(utter);   
+        });
+        amigos.addEventListener('click', function(){
+            utter.text = "Amigos";
+            speech.speak(utter);   
+        });
+        vecino.addEventListener('click', function(){
+            utter.text = "Vecino";
+            speech.speak(utter);   
+        });
+        maestra.addEventListener('click', function(){
+            utter.text = "Maestra";
+            speech.speak(utter);   
+        });
+        policia.addEventListener('click', function(){
+            utter.text = "Policia";
+            speech.speak(utter);   
+        });
+        bombero.addEventListener('click', function(){
+            utter.text = "Bombero";
+            speech.speak(utter);   
+        });
+        medica.addEventListener('click', function(){
+            utter.text = "Médica";
+            speech.speak(utter);   
+        });
+    </script>
+</body>
+</html>
