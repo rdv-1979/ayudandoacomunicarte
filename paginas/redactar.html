@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redactar</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <div class="contenedor-redactar">
+        <div class="formulario-redactar" id="formulario-redactar">
+            <h2>Ingresar imagenes para redactar</h2>
+                <div class="contenedor-leer">
+                    <table class="tabla-redactar">
+                        <tr>
+                            <td id="img-1" class="img-1"></td>
+                        </tr>
+                    </table>
+                </div>
+            <button id="leer" class="leer"><i class='bx bxs-user-voice'></i></button>
+            <button id="borrar" class="borrar"><i class='bx bxs-trash'></i></button>
+            <button id="borrar-ultimo" class="borrar-ultimo"><i class='bx bx-x-circle'></i></button>
+        </div>
+        <div class="tabla-imagenes" id="tabala-imagenes">
+            <table class="tabla-opciones">
+                <tbody>
+                    <tr class="fila-imagenes">
+                        <td><img src="../imagenes/cocina.png" alt="comer" id="comer"></td>
+                        <td><img src="../imagenes/caminar.png" alt="jugar" id="jugar"></td>
+                        <td><img src="../imagenes/bailar.png" alt="bailar" id="bailar"></td>
+                    </tr>
+                    <tr>
+                        <td>Comer</td>
+                        <td>Jugar</td>
+                        <td>Bailar</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            var frase = '';
+            var id = '';
+            const area = document.getElementById('area');
+            $('#comer').click(function(){
+                id = id + 'a';
+                $('#img-1').append('<img src="../imagenes/cocina.png" class="imagen-redactar" id="'+id+'">');        
+                frase += "cocina";
+            });
+            $('#jugar').click(function(){
+                id = id + 'a';
+                $('#img-1').append('<img src="../imagenes/caminar.png" class="imagen-redactar" id="'+id+'">');        
+                frase += "caminar";
+            });
+            $('#bailar').click(function(){
+                id = id + 'a';
+                $('#img-1').append('<img src="../imagenes/bailar.png" class="imagen-redactar" id="'+id+'">');        
+                frase += "bailar";
+            });
+            $('#leer').click(function(){
+
+                const speech = window.speechSynthesis;
+                speech.volume = 1;
+                speech.rate = 1;
+                speech.pitch = 1;
+                const utter = new SpeechSynthesisUtterance();
+
+                utter.text = frase;
+                speech.speak(utter);
+
+            });
+            $('#borrar').click(function(){
+                $('#img-1').html('');
+                frase = '';
+            });
+            $('#borrar-ultimo').click(function(){
+                if(id == ''){
+                    Swal.fire({
+                        title: "Opción de borrado",
+                        text: "No hay elementos para borrar!",
+                        icon: "success"
+                    });
+                }else{
+                    $('#'+id+'').remove();
+                    id = id.substring(0, id.length - 1);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

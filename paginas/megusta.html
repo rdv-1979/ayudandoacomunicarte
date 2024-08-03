@@ -1,1 +1,68 @@
-Me gusta
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Me gusta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <table class="tabla-dolor">
+        <tbody>
+            <tr class="fila-imagenes">
+                <td class="opcion"><img src="../imagenes/jugar.png" alt="jugar" id="jugar"
+                    data-bs-toggle="modal" data-bs-target="#jugando"></td>
+            </tr>
+            <tr>
+                <td>Jugar</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="modal fade" id="jugando" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Juegos</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="tabla-quiero">
+                    <tbody>
+                        <tr class="fila-imagenes">
+                            <td><img src="../imagenes/oca.png" alt="oca" id="oca"></td>
+                        </tr>
+                        <tr>
+                            <td>Oca</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>  
+    <script>
+        const speech = window.speechSynthesis;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        const utter = new SpeechSynthesisUtterance();
+
+        const jugar = document.getElementById('jugar');
+        const oca = document.getElementById('oca');
+
+        jugar.addEventListener('click', function(){
+            utter.text = 'Jugar';
+            speech.speak(utter);
+        });
+        oca.addEventListener('click', function(){
+            utter.text = 'Oca';
+            speech.speak(utter);
+        });
+    </script>
+</body>
+</html>

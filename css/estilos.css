@@ -35,7 +35,7 @@ img:hover{
     border: 2px solid red;
 }
 .iconos{
-    font-size:50px;
+    font-size:40px;
 }
 .espacio{
     padding: 10px;
@@ -51,4 +51,106 @@ img:hover{
 }
 .img-buscar{
     border: 2px solid greenyellow;
+}
+.contenedor .formulario textarea{
+    resize: none;
+}
+.imagen-redactar{
+    width: 2rem;
+    height: 2rem;
+}
+.contenedor-leer{
+    width: 100%;
+    height: 25%;
+}
+.tabla-redactar{
+    width: 100%;
+    height: 5rem;
+    border: 2px solid black;
+}
+.img-1{
+    width: 100%;
+    min-height: 100%;
+}
+.leer{
+    width: 20%;
+    height: 20%;
+    font-size: 15px;
+    color: white;
+    background-color: goldenrod;
+    box-shadow: 5px 5px;
+    border-radius: 5px;
+}
+.leer:hover{
+    width: 20%;
+    height: 20%;
+    font-size: 15px;
+    color: white;
+    background-color: green;
+    box-shadow: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.borrar{
+    width: 20%;
+    height: 20%;
+    font-size: 15px;
+    color: white;
+    background-color: crimson;
+    box-shadow: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.borrar:hover{
+    width: 20%;
+    height: 20%;
+    font-size: 15px;
+    color: white;
+    background-color: red;
+    box-shadow: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.borrar-ultimo{
+    width: 20%;
+    height: 20%;
+    font-size: 15px;
+    color: white;
+    background-color: black;
+    box-shadow: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.borrar-ultimo:hover{
+    width: 20%;
+    height: 20%;
+    font-size: 15px;
+    color: white;
+    background-color: red;
+    box-shadow: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.div-busqueda{
+    display: grid;
+    border: 2px solid black;
+    padding: 5px 5px;
+    gap: 10px;
+}
+.espacio-icono{
+    border: 2px dotted crimson;
+    width: 5rem;
+    text-align: center;
+}
+.img-escudo{
+    width: 4rem;
+    height: 4rem;
+    text-align: end;
+}
+.contenedor-encabezado{
+    display: flex;
+}
+.creditos{
+    background-color:cornflowerblue;
+    color: white;
 }
