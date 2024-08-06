@@ -22,16 +22,16 @@
         const textElem = document.querySelector("[data-text]");
         const leer = document.getElementById('leer');
 
-        var front = false;
+        /*var front = false;
             document.getElementById("flip-button").onclick = function () {
             front = !front;
         };
 
-        var constraints = { video: { facingMode: front ? "user" : "environment" } };
+        var constraints = { video: { facingMode: front ? "user" : "environment" } };*/
 
         async function setup(){
-        //const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: "environment" } } })
-        const stream = await navigator.mediaDevices.getUserMedia({ constraints })
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { exact: "environment" } } })
+        //const stream = await navigator.mediaDevices.getUserMedia({ constraints })
         video.srcObject = stream
 
         video.addEventListener("playing", async () => {
