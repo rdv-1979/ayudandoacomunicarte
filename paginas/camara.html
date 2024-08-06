@@ -24,7 +24,7 @@
 
         async function setup(){
         const stream = await navigator.mediaDevices.getUserMedia({ video:true,
-                                                                  {facingMode: "environment"} })
+                                                                  facingMode: "environment" })
         video.srcObject = stream
 
         video.addEventListener("playing", async () => {
