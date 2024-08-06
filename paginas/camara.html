@@ -23,8 +23,7 @@
         const leer = document.getElementById('leer');
 
         async function setup(){
-        const stream = await navigator.mediaDevices.getUserMedia({ video:true,
-                                                                  facingMode: "environment" })
+        const stream = await navigator.mediaDevices.getUserMedia({ video:true })
         video.srcObject = stream
 
         video.addEventListener("playing", async () => {
