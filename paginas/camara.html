@@ -24,16 +24,8 @@
 
         async function setup(){
         const stream = await navigator.mediaDevices.getUserMedia({ video:true,
-                                                                 constraints })
+                                                                 facingMode: "environment" })
         video.srcObject = stream
-        
-        var front = false;
-        document.getElementById("flip-button").onclick = function () {
-            front = !front;
-        };
-
-        var constraints = { video: { facingMode: front ? "user" : "environment" } };
-        console.log(constraints);
 
         video.addEventListener("playing", async () => {
             
