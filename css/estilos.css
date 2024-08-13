@@ -188,7 +188,7 @@ img:hover{
     margin-top: 5px;
     border: 2px solid black;
     box-shadow: 2px 2px;
-    width: 75%;
+    width: 80%;
     padding: 5px 5px;
 }
 .clima-dia1, .clima-dia2, .clima-dia3{
@@ -216,5 +216,31 @@ img:hover{
     width: 65px;
     background-color: rgb(226, 72, 16);
     border-radius: 5px;
+    cursor: pointer;
+}
+.leer-noticias{
+    width: 50px;
+    height: 30px;
+    color: white;
+    background-color: forestgreen;
+}
+.stop-noticias{
+    width: 50px;
+    height: 30px;
+    color: white;
+    background-color:brown;
+}
+.leer-noticias:hover{
+    width: 50px;
+    height: 30px;
+    color: white;
+    background-color: rgb(16, 226, 16);
+    cursor: pointer;
+}
+.stop-noticias:hover{
+    width: 50px;
+    height: 30px;
+    color: white;
+    background-color:rgb(217, 18, 18);
     cursor: pointer;
 }
