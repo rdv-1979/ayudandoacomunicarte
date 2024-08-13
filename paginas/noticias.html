@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <div class="contenedor-noticias">
+        <form id="noticias" style="min-height: 250px;
+                                    max-height: 250px;
+                                    overflow-y: auto;
+                                    color: white;
+                                    background-color: rgb(10, 10, 10);">
+        </form>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                //https://newsdata.io/
+                //rdvelazquez1979@gmail.com Rdvelazquez@1979
+                //key = pub_34191f5b5a71fc04f88276fa4c7244caecf45
+                url:'https://newsdata.io/api/1/news?apikey=pub_34191f5b5a71fc04f88276fa4c7244caecf45&q=Buenos Aires&country=ar',
+                success:function(data){
+                    for(let i=0; i < data.results.length;i++){
+                        $('#noticias').append(data.results[i].country[0]+"<br>");
+                        $('#noticias').append(data.results[i].link+"<br>");
+                        $('#noticias').append(data.results[i].pubDate+"<br>");
+                        $('#noticias').append(data.results[i].title+"<br>");
+                        $('#noticias').append(data.results[i].source_url+"<br>");
+                        $('#noticias').append('<button id='+i+' class="leer-noticias">Leer</button>');
+                        $('#noticias').append('<button id='+i+"j"+' class="stop-noticias">Stop</button>');
+                        $('#noticias').append(''+'<br>');
+                        $('#'+i+'').click(function(e){
+                            e.preventDefault();
+                            const speech = window.speechSynthesis;
+                            speech.volume = 1;
+                            speech.rate = 0.6;
+                            speech.pitch = 0.6;
+
+                            const utter = new SpeechSynthesisUtterance();
+                            utter.text = "País: "+data.results[i].country[0]+".";
+                            utter.text += " Enlace: "+data.results[i].link+".";
+                            speech.speak(utter);
+                        });
+                        $('#'+i+"j"+'').click(function(e){
+                            e.preventDefault();
+                            const speech = window.speechSynthesis;
+                            speech.volume = 1;
+                            speech.rate = 0.6;
+                            speech.pitch = 0.6;
+
+                            speech.cancel();
+                        });
+                        $('#noticias').append(''+'<br>');
+                    }
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
