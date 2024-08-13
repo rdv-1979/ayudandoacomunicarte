@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Mapa</title>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <style>
+        #map { height: 500px; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            console.log(latitude);
+            console.log(longitude);
+    
+            const speech = window.speechSynthesis;
+            speech.volume = 1;
+            speech.rate = 1;
+            speech.pitch = 1;
+            const utter = new SpeechSynthesisUtterance();
+
+            var map = L.map('map').setView([latitude, longitude], 15);
+            var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+                attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+            }).addTo(map);
+
+            //var geojson = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"LineString","coordinates":[[-62.97101185738865,-35.488553785013366],[-62.9710378226528,-35.488557169247215]]},"id":"57c5b842-da94-434a-b4ac-10bb6b5f2d9a","properties":{}},{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[-62.965493867241406,-35.49437024356784],[-62.965090922401814,-35.494287735463445],[-62.964963041704024,-35.49477492494775],[-62.96535392232697,-35.49484564575659],[-62.965493867241406,-35.49437024356784]]]},"id":"6e14de64-af99-4101-b316-b3a06cd4c507","properties":{}},{"type":"Feature","geometry":{"type":"Point","coordinates":[-62.95724827145558,-35.48664468975924]},"id":"f6fb6637-ef6b-489b-a4fd-e1b041133d28","properties":{}},{"type":"Feature","geometry":{"type":"LineString","coordinates":[[-62.96490152923434,-35.494666402455415],[-62.964836382991265,-35.49485499191725],[-62.96403773831163,-35.49469586958848],[-62.96442620294414,-35.49292585798013],[-62.96473745720918,-35.491613548946084],[-62.96511144490563,-35.490375872568414],[-62.96545647872151,-35.48914996479044],[-62.964662659690006,-35.48899868962101],[-62.9647350444141,-35.488729536975534],[-62.96328011166014,-35.48847020658176],[-62.963149819174745,-35.48876490014573],[-62.96242355920921,-35.48858219026377],[-62.962768593013266,-35.48738572495837],[-62.960503170763786,-35.486943319358076],[-62.95905788930905,-35.48806317042071],[-62.95724827145558,-35.48664468975924]]},"id":"deeaf011-abbb-4c4b-8e01-b0cf9e6350ec","properties":{}}]}
+
+            //L.geoJSON(geojson).addTo(map);
+            L.Control.geocoder().addTo(map);
+            var homeIcon = L.icon({
+                iconUrl: '../imagenes/home-icon.png',
+                iconSize:     [50, 50],
+                iconAnchor:   [50, 50],
+                popupAnchor:  [-3, -50]
+            });
+
+            var schoolIcon = L.icon({
+                iconUrl: '../imagenes/school.png',
+                iconSize:     [50, 50],
+                iconAnchor:   [50, 50],
+                popupAnchor:  [-3, -50]
+            });
+
+            var plazaIcon = L.icon({
+                iconUrl: '../imagenes/plaza.png',
+                iconSize:     [50, 50],
+                iconAnchor:   [50, 50],
+                popupAnchor:  [-3, -50]
+            });
+            //-35.489048, -62.975728 la plaza
+            //var marker = L.marker([-35.486738, -62.957074]).addTo(map);
+            var marker = L.marker([-35.486738, -62.957074], {icon: homeIcon}).addTo(map);
+            var marker2 = L.marker([-35.494605, -62.965214], {icon: schoolIcon}).addTo(map);
+            var marker3 = L.marker([-35.489048, -62.975728], {icon: plazaIcon}).addTo(map);
+            
+            marker.addEventListener('click', function(){
+                utter.text = "Mi casa!";
+                marker.bindPopup("<b>Mi casa!</b></br><img src='../imagenes/casa.png' style='width:150px; height:150px;' name='Mi casa' onclick='hablar(this.name)'';>");
+                speech.speak(utter);
+            });
+
+            marker2.addEventListener('click', function(){
+                utter.text = "Escuela de educación secundaria número 1!";
+                marker2.bindPopup("<b>E.E.S.T N° 1!</b></br><img src='../imagenes/escuela.png' style='width:150px; height:150px;' name='E.E.S.T N° 1' onclick='hablar(this.name)'';>");
+                speech.speak(utter);
+            });
+            marker3.addEventListener('click', function(){
+                utter.text = "La plaza!";
+                marker3.bindPopup("<b>La plaza!</b></br><img src='../imagenes/plaza-img.png' style='width:150px; height:150px;' name='La plaza' onclick='hablar(this.name)'';>");
+                speech.speak(utter);
+            });
+
+            function onMapClick(e) {
+                //alert("You clicked the map at " + e.latlng);
+                //console.log(e);
+
+                
+
+            }
+
+            map.on('click', onMapClick);            
+            
+            });
+        } 
+
+        function hablar(name){
+            if(name == 'Mi casa'){
+                Swal.fire({
+                    title: "Iconos!",
+                    text: "Ésta es mi casa!",
+                    icon: "success"
+                });
+            }
+            if(name == 'E.E.S.T N° 1'){
+                Swal.fire({
+                    title: "Iconos!",
+                    text: "Ésta es la E.E.S.T N° 1!",
+                    icon: "success"
+                });
+            }
+            if(name == 'La plaza'){
+                Swal.fire({
+                    title: "Iconos!",
+                    text: "Ésta es la plaza!",
+                    icon: "success"
+                });
+            }
+        }
+        
+    </script>
+</body>
+</html>

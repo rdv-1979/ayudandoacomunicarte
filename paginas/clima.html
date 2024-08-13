@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <div class="contenedor-clima">
+        <p id="lugar"></p>
+        <table>
+            <thead>
+                <th>Hoy</th>
+                <th>Mañana</th>
+                <th>Siguiente</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="clima-dia1">
+                        <img id="icono1">
+                        <p id="minTemp1">Min. </p>
+                        <p id="maxTemp1">Máx. </p>
+                        <p id="maxWind1">V. </p>
+                        <p id="avgHumidity1">H. </p>
+                        <button id="btn-leer-clima1" class="boton-clima-leer"><i class='bx bx-book-reader bx-lg' style='color:#4fe512'></i></button>
+                        <button id="btn-stop-clima1" class="boton-clima-stop"><i class='bx bx-stop-circle bx-lg' style='color:#e10e0e'></i></button>
+                    </td>
+                    <td class="clima-dia2">
+                        <img id="icono2">
+                        <p id="minTemp2">Min. </p>
+                        <p id="maxTemp2">Máx. </p>
+                        <p id="maxWind2">V. </p>
+                        <p id="avgHumidity2">H. </p>
+                        <button id="btn-leer-clima2" class="boton-clima-leer"><i class='bx bx-book-reader bx-lg' style='color:#4fe512'></i></button>
+                        <button id="btn-stop-clima2" class="boton-clima-stop"><i class='bx bx-stop-circle bx-lg' style='color:#e10e0e'></i></button>
+                    </td>
+                    <td class="clima-dia3">
+                        <img id="icono3">
+                        <p id="minTemp3">Min. </p>
+                        <p id="maxTemp3">Máx. </p>
+                        <p id="maxWind3">V. </p>
+                        <p id="avgHumidity3">H. </p>
+                        <button id="btn-leer-clima3" class="boton-clima-leer"><i class='bx bx-book-reader bx-lg' style='color:#4fe512'></i></button>
+                        <button id="btn-stop-clima3" class="boton-clima-stop"><i class='bx bx-stop-circle bx-lg' style='color:#e10e0e'></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function(){
+
+            const speech = window.speechSynthesis;
+            speech.volume = 1;
+            speech.rate = 0.6;
+            speech.pitch = 0.6;
+
+            const utter = new SpeechSynthesisUtterance();
+
+            $.ajax({
+
+                url:'https://api.weatherapi.com/v1/forecast.json?key=854e3d737bb24122965174905221305&q=-35.48912, -62.97569 &days=7&aqi=no&alerts=yes',
+
+                success:function(respuesta){
+                    console.log(respuesta);
+                    $('#lugar').append(respuesta.location.country+" - "+respuesta.location.region+" - "+respuesta.location.name);
+                    var iconoHoy = respuesta.forecast.forecastday[0].day.condition.icon;
+                    var iconoMañana = respuesta.forecast.forecastday[1].day.condition.icon;
+                    var iconoSiguiente = respuesta.forecast.forecastday[2].day.condition.icon;
+                    $('#icono1').attr('src', iconoHoy);
+                    $('#icono2').attr('src', iconoMañana);
+                    $('#icono3').attr('src', iconoSiguiente);
+                    $('#minTemp1').append(respuesta.forecast.forecastday[0].day.mintemp_c+" C°");
+                    $('#minTemp2').append(respuesta.forecast.forecastday[1].day.mintemp_c+" C°");
+                    $('#minTemp3').append(respuesta.forecast.forecastday[2].day.mintemp_c+" C°");
+                    $('#maxTemp1').append(respuesta.forecast.forecastday[0].day.maxtemp_c+" C°");
+                    $('#maxTemp2').append(respuesta.forecast.forecastday[1].day.maxtemp_c+" C°");
+                    $('#maxTemp3').append(respuesta.forecast.forecastday[2].day.maxtemp_c+" C°");
+                    $('#maxWind1').append(respuesta.forecast.forecastday[0].day.maxwind_kph+" kph");
+                    $('#maxWind2').append(respuesta.forecast.forecastday[1].day.maxwind_kph+" kph");
+                    $('#maxWind3').append(respuesta.forecast.forecastday[2].day.maxwind_kph+" kph");
+                    $('#avgHumidity1').append(respuesta.forecast.forecastday[0].day.avghumidity+" %");
+                    $('#avgHumidity2').append(respuesta.forecast.forecastday[1].day.avghumidity+" %");
+                    $('#avgHumidity3').append(respuesta.forecast.forecastday[2].day.avghumidity+" %");
+
+                    $('.clima-dia1').click(function(){
+                     
+                    });
+                    $('.clima-dia2').click(function(){
+                       
+                    });
+                    $('.clima-dia3').click(function(){
+                       
+                    });
+                    $('#btn-leer-clima1').click(function(){
+                        utter.text = "El día de hoy se espera una temperatura mínima de "+respuesta.forecast.forecastday[0].day.mintemp_c+" grados centígrados.";
+                        utter.text += "  También habra una temperatura máxima de "+respuesta.forecast.forecastday[0].day.maxtemp_c+" grados centígrados.";
+                        utter.text += "  El viento soplará con una velocidad máxima de "+respuesta.forecast.forecastday[0].day.maxwind_kph+" Kilometros por hora.";
+                        utter.text += "  Y la humedad promedio será del "+respuesta.forecast.forecastday[0].day.avghumidity+" porciento.";
+                        speech.speak(utter);
+                    });
+                    $('#btn-stop-clima1').click(function(){
+                        speech.cancel();
+                    });
+                    $('#btn-leer-clima2').click(function(){
+                        utter.text = "El día de mañana se espera una temperatura mínima de "+respuesta.forecast.forecastday[1].day.mintemp_c+" grados centígrados.";
+                        utter.text += "  También habra una temperatura máxima de "+respuesta.forecast.forecastday[1].day.maxtemp_c+" grados centígrados.";
+                        utter.text += "  El viento soplará con una velocidad máxima de "+respuesta.forecast.forecastday[1].day.maxwind_kph+" Kilometros por hora.";
+                        utter.text += "  Y la humedad promedio será del "+respuesta.forecast.forecastday[1].day.avghumidity+" porciento.";
+                        speech.speak(utter);
+                    });
+                    $('#btn-stop-clima2').click(function(){
+                        speech.cancel();
+                    });
+                    $('#btn-leer-clima3').click(function(){
+                        utter.text = "Pasado mañana se espera una temperatura mínima de "+respuesta.forecast.forecastday[2].day.mintemp_c+" grados centígrados.";
+                        utter.text += "  También habra una temperatura máxima de "+respuesta.forecast.forecastday[2].day.maxtemp_c+" grados centígrados.";
+                        utter.text += "  El viento soplará con una velocidad máxima de "+respuesta.forecast.forecastday[2].day.maxwind_kph+" Kilometros por hora.";
+                        utter.text += "  Y la humedad promedio será del "+respuesta.forecast.forecastday[2].day.avghumidity+" porciento.";
+                        speech.speak(utter);
+                    });
+                    $('#btn-stop-clima3').click(function(){
+                        speech.cancel();
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

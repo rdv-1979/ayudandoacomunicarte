@@ -9,9 +9,11 @@
     <title>Extraer información</title>
 </head>
 <body>
+    <h4>Muestre a la cámara el texto a reproducir.</h3>
+    <h5>Luego, presione la tecla "Leer" para comenzar.</h4>
     <video width="310" height="310" autoplay muted></video>
     <pre data-text style="font-size: 1rem; font-family: 
-                          inherit; width: 100%; white-space: pre-wrap;
+                          inherit; width: 310px; white-space: pre-wrap;
                           border: 2px solid green;
                           font-weight: bold;">
     </pre>
@@ -22,7 +24,7 @@
         const leer = document.getElementById('leer');
 
         async function setup(){
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+        const stream = await navigator.mediaDevices.getUserMedia({ video: {facingMode: "environment" }})
         video.srcObject = stream
 
         video.addEventListener("playing", async () => {

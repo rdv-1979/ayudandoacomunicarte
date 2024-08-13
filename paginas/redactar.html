@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redactar</title>
     <script src="../js/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../css/estilos.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="contenedor-redactar">
@@ -20,22 +20,32 @@
                         </tr>
                     </table>
                 </div>
-            <button id="leer" class="leer"><i class='bx bxs-user-voice'></i></button>
-            <button id="borrar" class="borrar"><i class='bx bxs-trash'></i></button>
-            <button id="borrar-ultimo" class="borrar-ultimo"><i class='bx bx-x-circle'></i></button>
+            <button id="leer" class="btn"><i class='bx bx-user-voice' style='color:#21d645'></i></button>
+            <button id="borrar" class="btn"><i class='bx bxs-trash-alt' style='color:#df185b'></i></button>
+            <button id="borrar-ultimo" class="btn"><i class='bx bxs-tag-x' style='color:#df185b'></i></button>
         </div>
-        <div class="tabla-imagenes" id="tabala-imagenes">
+        <div class="tabla-imagenes" id="tabla-imagenes">
             <table class="tabla-opciones">
                 <tbody>
                     <tr class="fila-imagenes">
-                        <td><img src="../imagenes/cocina.png" alt="comer" id="comer"></td>
-                        <td><img src="../imagenes/caminar.png" alt="jugar" id="jugar"></td>
+                        <td><img src="../imagenes/comer_un_bocadillo.png" alt="comer" id="comer"></td>
+                        <td><img src="../imagenes/jugar.png" alt="jugar" id="jugar"></td>
                         <td><img src="../imagenes/bailar.png" alt="bailar" id="bailar"></td>
                     </tr>
                     <tr>
                         <td>Comer</td>
                         <td>Jugar</td>
                         <td>Bailar</td>
+                    </tr>
+                    <tr class="fila-imagenes">
+                        <td><img src="../imagenes/durazno.png" alt="durazno" id="durazno"></td>
+                        <td><img src="../imagenes/frutilla.png" alt="frutilla" id="frutilla"></td>
+                        <td><img src="../imagenes/dulce_de_leche.png" alt="ddl" id="ddl"></td>
+                    </tr>
+                    <tr>
+                        <td>Durazno</td>
+                        <td>Frutilla</td>
+                        <td>Dulce de leche</td>
                     </tr>
                 </tbody>
             </table>
@@ -45,48 +55,94 @@
         $(document).ready(function(){
             var frase = '';
             var id = '';
-            const area = document.getElementById('area');
+            let frase_completa = [];
+            const speech = window.speechSynthesis;
+            speech.volume = 1;
+            speech.rate = 1;
+            speech.pitch = 1;
+            const utter = new SpeechSynthesisUtterance();
+
             $('#comer').click(function(){
                 id = id + 'a';
-                $('#img-1').append('<img src="../imagenes/cocina.png" class="imagen-redactar" id="'+id+'">');        
-                frase += "cocina";
+                $('#img-1').append('<img src="../imagenes/comer_un_bocadillo.png" class="imagen-redactar" id="'+id+'">');        
+                frase_completa.push('comer');
             });
             $('#jugar').click(function(){
                 id = id + 'a';
-                $('#img-1').append('<img src="../imagenes/caminar.png" class="imagen-redactar" id="'+id+'">');        
-                frase += "caminar";
+                $('#img-1').append('<img src="../imagenes/jugar.png" class="imagen-redactar" id="'+id+'">');        
+                frase_completa.push('jugar');
             });
             $('#bailar').click(function(){
                 id = id + 'a';
                 $('#img-1').append('<img src="../imagenes/bailar.png" class="imagen-redactar" id="'+id+'">');        
-                frase += "bailar";
+                frase_completa.push('bailar');
             });
+            $('#durazno').click(function(){
+                id = id + 'a';
+                $('#img-1').append('<img src="../imagenes/durazno.png" class="imagen-redactar" id="'+id+'">');        
+                frase_completa.push('durazno');
+            });
+            $('#frutilla').click(function(){
+                id = id + 'a';
+                $('#img-1').append('<img src="../imagenes/frutilla.png" class="imagen-redactar" id="'+id+'">');        
+                frase_completa.push('frutilla');
+            });
+            $('#ddl').click(function(){
+                id = id + 'a';
+                $('#img-1').append('<img src="../imagenes/dulce_de_leche.png" class="imagen-redactar" id="'+id+'">');        
+                frase_completa.push('dulce de leche');
+            });
+
             $('#leer').click(function(){
 
-                const speech = window.speechSynthesis;
-                speech.volume = 1;
-                speech.rate = 1;
-                speech.pitch = 1;
-                const utter = new SpeechSynthesisUtterance();
+                utter.text = frase_completa;
 
-                utter.text = frase;
-                speech.speak(utter);
+                if(frase_completa == ''){
+                    utter.text = "No hay frase para leer.";
+                    Swal.fire({
+                        title: "Error!",
+                        text: "No hay frase para leer!",
+                        icon: "error"
+                    });
+                    speech.speak(utter);
+                }else{
+                    speech.speak(utter);
+                }
 
             });
             $('#borrar').click(function(){
-                $('#img-1').html('');
-                frase = '';
+                if($('#img-1').html() == ''){
+                    Swal.fire({
+                        title: "Error!",
+                        text: "No hay elementos para borrar!",
+                        icon: "error"
+                    });
+                    utter.text = "No hay elementos para borrar!";
+                    speech.speak(utter);
+                }else{
+                    $('#img-1').html('');
+                    frase_completa = [];
+                    id = '';
+                    console.log(frase_completa);
+                }
             });
             $('#borrar-ultimo').click(function(){
                 if(id == ''){
                     Swal.fire({
-                        title: "Opción de borrado",
+                        title: "Error!",
                         text: "No hay elementos para borrar!",
-                        icon: "success"
+                        icon: "error"
                     });
+                    utter.text = "No hay elementos para borrar!";
+                    speech.speak(utter);
                 }else{
                     $('#'+id+'').remove();
                     id = id.substring(0, id.length - 1);
+                    frase_completa.pop();
+                    console.log(frase_completa);
+                    if(id == ''){
+                        frase_completa = [];
+                    }
                 }
             });
         });

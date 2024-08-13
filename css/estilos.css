@@ -139,12 +139,15 @@ img:hover{
 }
 .espacio-icono{
     border: 2px dotted crimson;
-    width: 5rem;
+    width: 4rem;
     text-align: center;
 }
+.espacio-icono p{
+    font-size: 10px;
+}
 .img-escudo{
-    width: 4rem;
-    height: 4rem;
+    width: 2rem;
+    height: 2rem;
     text-align: end;
 }
 .contenedor-encabezado{
@@ -170,6 +173,48 @@ img:hover{
     color: white;
     background-color: green;
     box-shadow: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.traductor-respuesta{
+    width: 58%;
+    height: 40%;
+    border: 2px solid green;
+}
+.contenedor-traductor{
+    display: block;
+    gap: 25px;
+    margin-left: 15%;
+    margin-top: 5px;
+    border: 2px solid black;
+    box-shadow: 2px 2px;
+    width: 75%;
+    padding: 5px 5px;
+}
+.clima-dia1, .clima-dia2, .clima-dia3{
+    border: 2px solid green;
+    padding: 10px;
+    font-size: 11px;
+}
+.boton-clima-leer{
+    width: 65px;
+    background-color: aquamarine;
+    border-radius: 5px;
+}
+.boton-clima-stop{
+    width: 65px;
+    background-color: coral;
+    border-radius: 5px;
+}
+.boton-clima-leer:hover{
+    width: 65px;
+    background-color: rgb(35, 220, 159);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.boton-clima-stop:hover{
+    width: 65px;
+    background-color: rgb(226, 72, 16);
     border-radius: 5px;
     cursor: pointer;
 }

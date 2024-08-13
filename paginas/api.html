@@ -12,18 +12,21 @@
 </head>
 <body>
     <div class="col-12 div-busqueda">
-        <h3>Ingrese la palabra a buscar...</h3>
+        <h4>Ingrese la palabra a buscar...</h4>
         <input type="text" name="buscar" id="buscar" class="form-control">
         <button id="btn-buscar" class="form-control btn btn-success"><i class='bx bx-search-alt'></i></button>
     </div>
-    <div id="imagen" class="busquedas">
-    </div>
-    <div id="accion" class="busquedas">
-    </div>
+    <table class="imagen" id="imagen"></table>
 </body>
 <script>
     $(document).ready(function(){
         $('#btn-buscar').click( (e) => {
+            let descripcion = [];
+            const speech = window.speechSynthesis;
+            speech.volume = 1;
+            speech.rate = 1;
+            speech.pitch = 1;
+            const utter = new SpeechSynthesisUtterance();
             e.preventDefault();
                 var texto = $('#buscar').val();
                 if(texto == ''){
@@ -32,41 +35,46 @@
                         text: "No hay elementos para buscar!",
                         icon: "success"
                     });
+                    utter.text = 'No hay elementos para buscar!';
+                    speech.speak(utter);
                     return '';
                 }
                 $('#buscar').val('');
                 $('#imagen').html('');
-                $('#accion').html('');
-                var id1,id2,id3;
+                let contador=0;
                 $.ajax({
                     url: 'https://api.arasaac.org/v1/pictograms/es/search/'+texto,
                     success:function(data){
-                        console.log(data[0].keywords[0].keyword);
-                        console.log(data[0]._id);
-                        console.log(data[1]._id);
-                        console.log(data[2]._id);
-                        id1 = data[0]._id;
-                        id2 = data[1]._id;
-                        id3 = data[2]._id;
-                        $('#imagen').append('<img class="img-buscar" src="https://api.arasaac.org/api/pictograms/'+id1+'?download=false" style="width:33%;height:30%;">');
-                        $('#imagen').append('<img class="img-buscar" src="https://api.arasaac.org/api/pictograms/'+id2+'?download=false" style="width:33%;height:30%;">');
-                        $('#imagen').append('<img class="img-buscar" src="https://api.arasaac.org/api/pictograms/'+id3+'?download=false" style="width:33%;height:30%;">');
-                        
-                        $('#accion').append('<p style="width:33%;height:30%;">'+data[0].keywords[0].keyword+'</p>');
-                        $('#accion').append('<p style="width:33%;height:30%;">'+data[0].keywords[0].keyword+'</p>');
-                        $('#accion').append('<p style="width:33%;height:30%;">'+data[0].keywords[0].keyword+'</p>');
-                        $('img').click( () => {
-                            const speech = window.speechSynthesis;
-                            speech.volume = 1;
-                            speech.rate = 1;
-                            speech.pitch = 1;
-                            const utter = new SpeechSynthesisUtterance();
-                            utter.text = data[0].keywords[0].keyword;
-                            speech.speak(utter);
+                        for(let i=0 ; i < data.length; i++){
+                                contador += 1;
+                                $('#imagen').append('<td><img class="img-buscar" src="https://api.arasaac.org/api/pictograms/'+data[i]._id+'?download=false" style="width:100%;height:100%;" name="'+data[i].keywords[0].keyword+'" onclick="hablar(this.name);"><p style="width:100%;height:100%;">'+data[i].keywords[0].keyword+'</p></td>');
+                                descripcion.push(data[i].keywords[0].keyword);
+                                if(contador % 3 == 0){
+                                     $('#imagen').append('<tr></tr>');
+                                }          
+                        }
+                    },
+                    error:function(data){
+                        Swal.fire({
+                            title: "Opción de busqueda",
+                            text: "No hay resultado de la busqueda!",
+                            icon: "error"
                         });
+                        utter.text = 'No hubo resultado de la busqueda!';
+                        speech.speak(utter);
+                        return '';
                     }
-             });
+                });
         });
     });
+    function hablar(name){
+        const speech = window.speechSynthesis;
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        const utter = new SpeechSynthesisUtterance();
+        utter.text = name;
+        speech.speak(utter);
+    }
 </script>
 </html>
