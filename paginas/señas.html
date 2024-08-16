@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor de señas</title>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <div>
+        <div class="col-12 div-busqueda">
+            <h3>Ingresar texto</h3>
+            <input type="text" name="texto" id="texto">
+            <button id="aceptar" class="form-control btn btn-success">Aceptar</button>
+        </div>
+        <div id="mostrar" class="mostrar-señas"></div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            let cadena = [];
+            $('#aceptar').click(function(e){
+                e.preventDefault();
+                var texto = $('#texto').val();
+                if(texto == ''){
+                    Swal.fire({
+                        title: "Señas!",
+                        text: "El texto ingresado es vacio!",
+                        icon: "error"
+                    });
+                    const speech = window.speechSynthesis;
+                    speech.volume = 1;
+                    speech.rate = 0.6;
+                    speech.pitch = 0.6;
+
+                    const utter = new SpeechSynthesisUtterance();
+                    utter.text = "El texto ingresado es vacío!";
+                    speech.speak(utter);
+                }else{
+                    $('#texto').val('');
+                    $('#mostrar').html('');
+                    var name = 'a';
+                    cadena = texto.split('');
+                    console.log(cadena);
+                    for(let i=0; i < cadena.length; i++){
+                        $('#mostrar').show();
+                        if(cadena[i] == " " || cadena[i] == "?"){
+                            $('#mostrar').append('<td style="width:10px;"></tr>');
+                        }else{
+                            $('#mostrar').append('<img src="../imagenes/letras/'+cadena[i]+'-imagen.jpg" class="imagen-señas" name="'+cadena[i]+'" onclick="hablar(this.name);">');
+                            name = name + 'a';
+                        }
+                    }
+                    $('#mostrar').append('<i class="bx bx-volume-full icono-voz"></i>');
+                }
+                $('.icono-voz').click(function(){
+                    const speech = window.speechSynthesis;
+                    speech.volume = 1;
+                    speech.rate = 0.6;
+                    speech.pitch = 0.6;
+
+                    const utter = new SpeechSynthesisUtterance();
+                    cadena = cadena.toString(cadena);
+                    cadena = cadena.replaceAll(',', '');
+                    utter.text = cadena;
+                    speech.speak(utter);
+                });
+            });
+        });
+        function hablar(name){
+            const speech = window.speechSynthesis;
+            speech.volume = 1;
+            speech.rate = 0.6;
+            speech.pitch = 0.6;
+
+            const utter = new SpeechSynthesisUtterance();
+            utter.text = name;
+            speech.speak(utter);
+        }
+    </script>
+</body>
+</html>

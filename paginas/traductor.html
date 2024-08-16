@@ -13,8 +13,9 @@
         <h3>Ingresar texto...</h3>
         <textarea name="traducir" id="traducir" cols="26" rows="3" placeholder="Escriba aquí el texto..."
                   style="resize: none;"></textarea><br>
-        <label>Idioma de entrada</label>
-        <select id="emisor">
+        <div class="mb-3">
+        <label class="label-control">Idioma de entrada</label>
+        <select id="emisor" class="form-control">
             <option value="am-ET">Amharic</option>
             <option value="ar-SA">Arabic</option>
             <option value="be-BY">Bielarus</option>
@@ -39,8 +40,8 @@
             <option value="fr-FR">French</option>
             <option value="ko-KR">Korean</option>
         </select><br>
-        <label>Idioma de Salida</label>
-        <select id="receptor">
+        <label class="label-control">Idioma de Salida</label>
+        <select id="receptor" class="form-control">
             <option value="ar-SA">Arabic</option>
             <option value="am-ET">Amharic</option>
             <option value="be-BY">Bielarus</option>
@@ -65,6 +66,7 @@
             <option value="fr-FR">French</option>
             <option value="ko-KR">Korean</option>
         </select><br>
+        </div>
         <button id="escuchar" class="btn btn-success">Traducción</button>
         
         <form id="dialogo" style="width:400px;min-height: 240px;
