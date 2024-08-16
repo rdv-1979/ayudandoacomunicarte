@@ -184,17 +184,22 @@ img:hover{
 .contenedor-traductor{
     display: block;
     gap: 25px;
-    margin-left: 15%;
+    margin-left: 10%;
     margin-top: 5px;
     border: 2px solid black;
     box-shadow: 2px 2px;
     width: 80%;
     padding: 5px 5px;
+    background-color: bisque;
 }
 .clima-dia1, .clima-dia2, .clima-dia3{
     border: 2px solid green;
     padding: 10px;
     font-size: 11px;
+    border-radius: 5px;
+    color: white;
+    background-color: blue;
+    font-weight: bolder;
 }
 .boton-clima-leer{
     width: 65px;
@@ -243,4 +248,43 @@ img:hover{
     color: white;
     background-color:rgb(217, 18, 18);
     cursor: pointer;
+}
+.imagen-señas{
+    width: 30px;
+    height: 30px;
+    border: 2px solid red;
+}
+.mostrar-señas{
+    display: flex;
+    align-items:start;
+    justify-content: start;
+    gap: 5px;
+    padding: 10px;
+    background-color: bisque;
+    display: none;
+    border: 5px solid crimson;
+    border-radius: 5px;
+}
+.icono-voz{
+    display: flex;
+    align-items:start;
+    gap: 5px;
+    width: 35px;
+    font-size: 35px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    transition: 0.2ms;
+}
+.icono-voz:hover{
+    display: flex;
+    align-items:start;
+    gap: 5px;
+    width: 35px;
+    font-size: 35px;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: scale(1.05);
 }
