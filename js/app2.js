@@ -33,11 +33,12 @@ function enableCam(event) {
 
   // getUsermedia parameters to force video but not audio.
   const constraints = {
-    video: true
+    video: true,
+    facingMode: "environment"
   };
 
   // Activate the webcam stream.
-  navigator.mediaDevices.getUserMedia({ video: {facingMode: "environment" }}, constraints).then(function(stream) {
+  navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
     video.srcObject = stream;
     video.addEventListener('loadeddata', predictWebcam);
   });
